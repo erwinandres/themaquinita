@@ -131,6 +131,7 @@ function game(){
 }
 
 function newGame(){
+	score = 0;
 	direction = "right";
 	direction_queue = "right";
 	create_snake();
