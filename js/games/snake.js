@@ -15,10 +15,10 @@ var direction_queue = 'right';
 var score = 0;
 
 //Creando nuestra protagonista
-function create_snake(){	
-	snake = [];	
-	for(i = length - 1; i >= 0; i--){		
-		snake.push({x: i, y:0});	
+function create_snake(){
+	snake = [];
+	for(i = length - 1; i >= 0; i--){
+		snake.push({x: i, y:0});
 	}
 }
 
@@ -28,13 +28,19 @@ function paint_background(){
 	ctx.fillRect(0, 0, canvas.width, canvas.height);
 }
 
-function paint_cell(x, y, fill, stroke){	
-	ctx.fillStyle = fill;	
+function paint_cell(x, y, fill, stroke){
+	ctx.fillStyle = fill;
 	ctx.fillRect(x*cell_width, y*cell_width, cell_width, cell_width);
-	
+
 	//Añadir un borde si fue definido
-	if(typeof stroke !== "undefined"){		
-		ctx.strokeStyle = stroke;		
+	if(typeof stroke !== "undefined"){
+		ctx.strokeStyle = stroke;
 		ctx.strokeRect(x*cell_width, y*cell_width, cell_width, cell_width);	
+	}
+}
+
+function paint_snake(){
+	for(i = 0; i < snake.length; i++){
+		paint_cell(snake[i].x, snake[i].y, "#999", "#333");	
 	}
 }
