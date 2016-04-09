@@ -45,6 +45,20 @@ function paint_snake(){
 	}
 }
 
-paint_background();
-create_snake();
-paint_snake();
+//Game loop
+function game(){
+	ctx.beginPath();
+	paint_background();
+	paint_snake();
+}
+function newGame(){
+	create_snake();
+
+	if(typeof loop !== "undefined"){
+		clearInterval(loop);
+	}
+
+	loop = setInterval(game, fps);
+}
+
+newGame();
