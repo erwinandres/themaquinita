@@ -25,6 +25,13 @@ function create_snake(){
 function create_food(){
 	food.x = Math.floor(Math.random() * ((canvas.width / cell_width) -1));
 	food.y = Math.floor(Math.random() * ((canvas.height / cell_width) -1));
+
+	//Evitar crear la manzana donde está la serpiente.
+	for(i = 0; i++; i < snake.length){
+		if(check_collision(food.x, food.y, snake[i].x, snake[i].y)){
+			create_food();
+		}
+	}
 }
 
 //Dibujar en el canvas
@@ -98,6 +105,13 @@ function game(){
 	if(head.x < 0 || head.x == canvas.width / cell_width || head.y < 0 || head.y == canvas.height / cell_width){	
 		newGame();
 		return;
+	}
+
+	//Comer manzana
+	if(check_collision(head.x, head.y, food.x, food.y)){
+		snake[snake.length] = {x: head.x, y: head.y};	
+		create_food();
+		paint_food();
 	}
 }
 
