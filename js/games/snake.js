@@ -2,6 +2,7 @@
 var canvas = document.getElementById("canvas");
 canvas.width = 700;
 canvas.height = 600;
+canvas.setAttribute('tabindex', 1);
 var ctx = canvas.getContext("2d");
 
 //Game variables
@@ -62,6 +63,7 @@ function move_snake(){
 	snake.unshift(tail);
 }
 
+
 //Game loop
 function game(){
 	ctx.beginPath();
@@ -81,7 +83,7 @@ function newGame(){
 	direction = "right";
 	direction_queue = "right";
 	create_snake();
-		
+
 	if(typeof loop !== "undefined"){
 		clearInterval(loop);
 	}
