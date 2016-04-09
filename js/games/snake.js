@@ -14,6 +14,7 @@ var length = 5;
 var direction = 'right';
 var direction_queue = 'right';
 var score = 0;
+var playing = false;
 
 //Creando nuestra protagonista
 function create_snake(){
@@ -65,6 +66,15 @@ function paint_score(){
 	ctx.fillStyle = "#999";	
 	ctx.font = "normal 10pt Calibri";	
 	ctx.fillText("score: " + score, 10, canvas.height-10);
+}
+
+function start_text(){
+	var text = "Click to start";
+	paint_background();
+	ctx.fillStyle = "#fff";	
+	ctx.font = "normal 2em Calibri";
+	var metrics = ctx.measureText(text);
+	ctx.fillText(text, canvas.width/2 - metrics.width/2, canvas.height/2);
 }
 
 //Acciones del juego
@@ -149,4 +159,15 @@ function newGame(){
 	loop = setInterval(game, fps);
 }
 
-newGame();
+canvas.addEventListener("click", function(){
+	if (!playing) {
+		playing = true;
+		newGame();
+	}
+});
+
+function start_window(){
+	start_text();
+}
+
+start_window();
