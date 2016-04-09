@@ -61,6 +61,12 @@ function paint_food(){
 	paint_cell(food.x, food.y, "#F02B49", "#333");
 }
 
+function paint_score(){	
+	ctx.fillStyle = "#999";	
+	ctx.font = "normal 10pt Calibri";	
+	ctx.fillText("score: " + score, 10, canvas.height-10);
+}
+
 //Acciones del juego
 function move_snake(){
 	var x = snake[0].x;
@@ -99,6 +105,7 @@ function game(){
 	paint_snake();
 	paint_food();
 	move_snake();
+	paint_score();
 
 	//Verificar si la serpiente se ha estrellado con la pared
 	var head = snake[0];
@@ -116,6 +123,7 @@ function game(){
 
 	//Comer manzana
 	if(check_collision(head.x, head.y, food.x, food.y)){
+		score++;
 		snake[snake.length] = {x: head.x, y: head.y};
 		create_food();
 		paint_food();
