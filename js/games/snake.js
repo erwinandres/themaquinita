@@ -22,6 +22,10 @@ function create_snake(){
 		snake.push({x: i, y:0});
 	}
 }
+function create_food(){
+	food.x = Math.floor(Math.random() * ((canvas.width / cell_width) -1));
+	food.y = Math.floor(Math.random() * ((canvas.height / cell_width) -1));
+}
 
 //Dibujar en el canvas
 function paint_background(){
@@ -44,6 +48,10 @@ function paint_snake(){
 	for(i = 0; i < snake.length; i++){
 		paint_cell(snake[i].x, snake[i].y, "#999", "#333");	
 	}
+}
+
+function paint_food(){	
+	paint_cell(food.x, food.y, "#F02B49", "#333");
 }
 
 //Acciones del juego
@@ -76,6 +84,7 @@ function game(){
 	ctx.beginPath();
 	paint_background();
 	paint_snake();
+	paint_food();
 	move_snake();
 
 	//Verificar si la serpiente se ha estrellado con la pared
@@ -90,6 +99,7 @@ function newGame(){
 	direction = "right";
 	direction_queue = "right";
 	create_snake();
+	create_food();
 
 	canvas.onkeydown = function(evt) {
 		evt = evt || window.event;
