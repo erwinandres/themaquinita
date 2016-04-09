@@ -44,3 +44,7 @@ function paint_snake(){
 		paint_cell(snake[i].x, snake[i].y, "#999", "#333");	
 	}
 }
+
+paint_background();
+create_snake();
+paint_snake();
