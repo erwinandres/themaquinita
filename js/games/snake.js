@@ -63,6 +63,13 @@ function move_snake(){
 	snake.unshift(tail);
 }
 
+function change_direction(keycode){
+	//No hacer nada si se intenta cambiar directamente a la dirección opuesta.
+	if(keycode == 37 && direction != "right") direction_queue = "left";	
+	else if(keycode == 38 && direction != "bottom") direction_queue = "top";
+	else if (keycode == 39 && direction != "left") direction_queue = "right";
+	else if(keycode == 40 && direction != "top") direction_queue = "bottom";
+}
 
 //Game loop
 function game(){
@@ -83,6 +90,11 @@ function newGame(){
 	direction = "right";
 	direction_queue = "right";
 	create_snake();
+
+	canvas.onkeydown = function(evt) {
+		evt = evt || window.event;
+		change_direction(evt.keyCode);
+	};
 
 	if(typeof loop !== "undefined"){
 		clearInterval(loop);
