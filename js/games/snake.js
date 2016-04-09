@@ -1,5 +1,5 @@
 //Get the canvas
-var canvas = document.getElementById("game");
+var canvas = document.getElementById("canvas");
 canvas.width = 700;
 canvas.height = 600;
 var ctx = canvas.getContext("2d");
@@ -13,3 +13,9 @@ var length = 5;
 var direction = 'right';
 var direction_queue = 'right';
 var score = 0;
+
+//Dibujar en el canvas
+function paint_background(){
+	ctx.fillStyle = "#333";	
+	ctx.fillRect(0, 0, canvas.width, canvas.height);
+}
