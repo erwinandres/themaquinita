@@ -106,10 +106,17 @@ function game(){
 		newGame();
 		return;
 	}
+	//No te comas a ti mismo
+	for(i = 1; i < snake.length; i++){
+		if(head.x == snake[i].x && head.y == snake[i].y){
+			newGame();
+			return;
+		}
+	}
 
 	//Comer manzana
 	if(check_collision(head.x, head.y, food.x, food.y)){
-		snake[snake.length] = {x: head.x, y: head.y};	
+		snake[snake.length] = {x: head.x, y: head.y};
 		create_food();
 		paint_food();
 	}
