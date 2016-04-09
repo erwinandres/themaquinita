@@ -110,33 +110,37 @@ function check_collision(x1, y1, x2, y2){
 
 //Game loop
 function game(){
-	ctx.beginPath();
-	paint_background();
-	paint_snake();
-	paint_food();
-	move_snake();
-	paint_score();
+	if (playing) {
+		ctx.beginPath();
+		paint_background();
+		paint_snake();
+		paint_food();
+		move_snake();
+		paint_score();
 
-	//Verificar si la serpiente se ha estrellado con la pared
-	var head = snake[0];
-	if(head.x < 0 || head.x == canvas.width / cell_width || head.y < 0 || head.y == canvas.height / cell_width){	
-		newGame();
-		return;
-	}
-	//No te comas a ti mismo
-	for(i = 1; i < snake.length; i++){
-		if(head.x == snake[i].x && head.y == snake[i].y){
-			newGame();
+		//Verificar si la serpiente se ha estrellado con la pared
+		var head = snake[0];
+		if(head.x < 0 || head.x == canvas.width / cell_width || head.y < 0 || head.y == canvas.height / cell_width){	
+			playing = false;
 			return;
 		}
-	}
+		//No te comas a ti mismo
+		for(i = 1; i < snake.length; i++){
+			if(head.x == snake[i].x && head.y == snake[i].y){
+				playing = false;
+				return;
+			}
+		}
 
-	//Comer manzana
-	if(check_collision(head.x, head.y, food.x, food.y)){
-		score++;
-		snake[snake.length] = {x: head.x, y: head.y};
-		create_food();
-		paint_food();
+		//Comer manzana
+		if(check_collision(head.x, head.y, food.x, food.y)){
+			score++;
+			snake[snake.length] = {x: head.x, y: head.y};
+			create_food();
+			paint_food();
+		}
+	} else {
+		start_window();
 	}
 }
 
