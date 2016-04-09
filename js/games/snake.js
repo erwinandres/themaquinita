@@ -62,13 +62,19 @@ function move_snake(){
 	snake.unshift(tail);
 }
 
-
 //Game loop
 function game(){
 	ctx.beginPath();
 	paint_background();
 	paint_snake();
 	move_snake();
+
+	//Verificar si la serpiente se ha estrellado con la pared
+	var head = snake[0];
+	if(head.x < 0 || head.x == canvas.width / cell_width || head.y < 0 || head.y == canvas.height / cell_width){	
+		newGame();
+		return;
+	}
 }
 
 function newGame(){
