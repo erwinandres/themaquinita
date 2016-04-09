@@ -45,15 +45,37 @@ function paint_snake(){
 	}
 }
 
+//Acciones del juego
+function move_snake(){
+	var x = snake[0].x;
+	var y = snake[0].y;
+	direction = direction_queue;
+
+	if(direction == "right")x++;
+	else if(direction == "left") x--;
+	else if(direction == "top") y--;
+	else if(direction == "bottom") y++;
+
+	var tail = snake.pop();
+	tail.x = x;
+	tail.y = y;
+	snake.unshift(tail);
+}
+
+
 //Game loop
 function game(){
 	ctx.beginPath();
 	paint_background();
 	paint_snake();
+	move_snake();
 }
-function newGame(){
-	create_snake();
 
+function newGame(){
+	direction = "right";
+	direction_queue = "right";
+	create_snake();
+		
 	if(typeof loop !== "undefined"){
 		clearInterval(loop);
 	}
