@@ -97,9 +97,14 @@ textarea {
 body{
     background: #2c3e50;
     overflow: hidden;
+    position: relative;
+    left: 0;
+
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    transition: all 0.3s ease;
 }
 body.pushed{
-    position: relative;
     left: 25%;
 }
 #sidebar{
@@ -109,6 +114,13 @@ body.pushed{
     top: 0;
     bottom:0;
     left: -25%;
+
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+#sidebar.pushed{
+    left: 0;
 }
 #logo a{
     text-decoration: none;
