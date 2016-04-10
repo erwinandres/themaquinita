@@ -94,12 +94,18 @@ textarea {
 /* ==========================================================================
    Author's custom styles
    ========================================================================== */
-
-
-
-
-
-
+#canvas {
+    display: block;
+    background-color: #000;
+    margin: 0 auto;
+}
+#canvas-wrapper{
+    background-color: #000;
+    border:2px solid #fff;
+    width: 700px;
+    height: 600px;
+    margin: 0 auto;
+}
 
 
 
