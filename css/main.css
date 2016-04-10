@@ -96,18 +96,28 @@ textarea {
    ========================================================================== */
 body{
     background: #2c3e50;
+    position: relative;
+    left: 25%;
+    overflow: hidden;
+}
+#sidebar{
+    border-right: 1px solid black;
+    width: 25%;
+    position: fixed;
+    top: 0;
+    bottom:0;
+    left: 0;
 }
 #canvas {
     display: block;
     background-color: #000;
-    margin: 0 auto;
 }
 #canvas-wrapper{
     background-color: #000;
     border:2px solid #fff;
     width: 700px;
     height: 600px;
-    margin: 0 auto;
+    margin: 0;
 }
 #logo a{
     text-decoration: none;
