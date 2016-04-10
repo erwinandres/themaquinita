@@ -77,6 +77,14 @@ function start_text(){
 	ctx.fillText(text, canvas.width/2 - metrics.width/2, canvas.height/2);
 }
 
+function total_score(){
+	var text = "Score: " + score;
+	ctx.fillStyle = "#fff";	
+	ctx.font = "normal 1.5em Calibri";
+	var metrics = ctx.measureText(text);
+	ctx.fillText(text, canvas.width/2 - metrics.width/2, canvas.height/2 + 50);
+}
+
 //Acciones del juego
 function move_snake(){
 	var x = snake[0].x;
@@ -172,6 +180,7 @@ canvas.addEventListener("click", function(){
 
 function start_window(){
 	start_text();
+	total_score();
 }
 
 start_window();
