@@ -96,9 +96,11 @@ textarea {
    ========================================================================== */
 body{
     background: #2c3e50;
+    overflow: hidden;
+}
+body.pushed{
     position: relative;
     left: 25%;
-    overflow: hidden;
 }
 #sidebar{
     background-color: #34495e;
@@ -106,7 +108,7 @@ body{
     position: fixed;
     top: 0;
     bottom:0;
-    left: 0;
+    left: -25%;
 }
 #logo a{
     text-decoration: none;
@@ -121,6 +123,9 @@ body{
     font-size: 1.5em;
     line-height: 2;
 }
+#menu li{
+    border-bottom: 1px solid #2c3e50;
+}
 #menu li a{
     display: block;
     color: #fff;
@@ -133,6 +138,25 @@ body{
 #menu li a:hover{
     background-color: #8e44ad;
 }
+#menu-button{
+
+}
+.button{
+    background:transparent;
+    border:none;
+    width: 30px;
+    height: 30px;
+}
+#menu-button .icon-bar{
+    background-color: #fff;
+    display: block;
+    width: 22px;
+    height: 2px;
+    border-radius: 1px;
+}
+#menu-button .icon-bar+.icon-bar{
+    margin-top: 4px;
+}
 #canvas {
     display: block;
     background-color: #000;
@@ -142,7 +166,7 @@ body{
     border:2px solid #fff;
     width: 700px;
     height: 600px;
-    margin: 0;
+    margin: 0 auto;
 }
 
 
