@@ -78,6 +78,15 @@ function drawNumber(n, x, y, ralign) {
 	}
 	ctx.restore();
 }
+
+function start_text(){
+	var text = "Click to start";
+	ctx.fillStyle = "#fff";	
+	ctx.font = "normal 2em Calibri";
+	var metrics = ctx.measureText(text);
+	ctx.fillText(text, canvas.width/2 - metrics.width/2, canvas.height/2);
+}
+
 var
 /**
  * Constants
@@ -325,6 +334,12 @@ function update() {
 		ball.update();
 		player.update();
 		ai.update();
+
+		if (player.score >= 3 || ai.score >= 3) {
+			playing = false;
+			init();
+		}
+
 	}
 }
 
@@ -357,6 +372,10 @@ function draw() {
 	var w2 = WIDTH/2;
 	drawNumber(pad(player.score), w2-20, 20, true);
 	drawNumber(pad(ai.score), w2+20, 20);
+
+	if (!playing) {
+		start_text();
+	}
 
 	ctx.restore();
 }
