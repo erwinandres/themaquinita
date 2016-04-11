@@ -335,7 +335,7 @@ function update() {
 		player.update();
 		ai.update();
 
-		if (player.score >= 3 || ai.score >= 3) {
+		if (player.score >= 10 || ai.score >= 10) {
 			playing = false;
 			init();
 		}
