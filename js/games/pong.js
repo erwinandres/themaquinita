@@ -93,9 +93,10 @@ DownArrow = 40,
 /**
  * Game elements
  */
-canvas,
-ctx,
+canvas = document.getElementById("canvas"),
+ctx = canvas.getContext("2d"),
 keystate,
+playing = false,
 
 /**
  * The player paddle
@@ -258,10 +259,8 @@ ball = {
  */
 function main() {
 	// create, initiate and append game canvas
-	canvas = document.getElementById("canvas");
 	canvas.width = WIDTH;
 	canvas.height = HEIGHT;
-	ctx = canvas.getContext("2d");
 
 	keystate = {};
 	// keep track of keyboard presses
@@ -271,6 +270,12 @@ function main() {
 	document.addEventListener("keyup", function(evt) {
 		delete keystate[evt.keyCode];
 	});
+
+	if (!playing) {
+		canvas.addEventListener("click", function(){
+			playing = true;
+		});
+	}
 
 	init(); // initiate game objects
 
@@ -316,9 +321,11 @@ function init() {
  * Update all game objects
  */
 function update() {
-	ball.update();
-	player.update();
-	ai.update();
+	if (playing) {
+		ball.update();
+		player.update();
+		ai.update();
+	}
 }
 
 /**
